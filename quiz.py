@@ -16,7 +16,7 @@ def check_answer(user_guess,answer_list,word_position, max_guesses):
 		print "Incorrecto!", "You have a total of "+ str(max_guesses - 1) + " guesses"
 
 def play_game(game_string, blanks_in_text, answers, max_guesses):
-	replaced = []
+	# replaced = []
 	answer = False
 	index = 0
 	game_string = game_string.split()
@@ -43,14 +43,14 @@ def play_game(game_string, blanks_in_text, answers, max_guesses):
 			print game_string
 			'''splits game_string again to find the next number in the list'''
 			game_string = game_string.split()
-			replaced.append(word)
+			# replaced.append(word)
 			index += 1
 			answer = False
-		else:
-			replaced.append(word)
+	# 	else:
+	# 		replaced.append(word)
 
-	replaced = " ".join(replaced)
-	return replaced
+	# replaced = " ".join(replaced)
+	# return replaced
 
 def level_easy():
 	easy_answers = ['Ipsum', 'def','text', '1500s']
