@@ -34,7 +34,7 @@ def play_game(game_string, blanks_in_text, answers, max_guesses):
 				if max_guesses == 0:
 					sys.exit("Game over")
 			word = word.replace(replacement, user_input)
-			
+
 			'''changes element in list game_string to the value of variable word, above'''
 			game_string[index_to_change] = word
 			'''converts list game_string into a string'''
@@ -53,21 +53,34 @@ def play_game(game_string, blanks_in_text, answers, max_guesses):
 	return replaced
 
 def level_easy():
-	easy_answers = ['Ipsum', 'text', '1500s']
+	easy_answers = ['Ipsum', 'def','text', '1500s']
 	blanks_in_text = ["___1___", "___2___", "___3___", "___4___"]
-	easy_para = '''A ___1___ is created with the def keyword. You specify the inputs a ___2___ takes by adding ___3___ separated by commas between the parentheses.'''
-	numb_of_wrong_guesses = 5
+	easy_para = '''A ___1___ is created with the ___1___ keyword. You specify the inputs a ___2___ takes by adding ___3___ separated by commas between the parentheses.'''
+	'''asks the user the number of guesses per question. Assings raw_input to variable numb_of_wrong_guesses than then it's passed to play_game as an arguemtn)'''
+	numb_of_wrong_guesses = int(raw_input("how many guesses for this questions? "))
+
 	print "The current paragraph is: \n", easy_para
 	paragraph = play_game(easy_para,blanks_in_text,easy_answers, numb_of_wrong_guesses)
+	#print paragraph
 
-	print paragraph
+def level_medium():
+	medium_answers = ['Bolivar', 'Venezuela']
+	blanks_in_text = ["___1___", "___2___"]
+	medium_para = '''Simon ___1___ Caracas, ___2___ '''
+	'''asks the user the number of guesses per question. Assings raw_input to variable numb_of_wrong_guesses than then it's passed to play_game as an arguemtn)'''
+	numb_of_wrong_guesses = int(raw_input("how many guesses for this questions? "))
+
+	print "The current paragraph is: \n", medium_para
+	paragraph = play_game(medium_para,blanks_in_text,medium_answers, numb_of_wrong_guesses)
+	#print paragraph
+
 
 level = raw_input("Choose a level: easy, medium, or hard.\n")
 if level == 'easy':
 	print "You chose easy!\n"
-	print "You have a total of 5 guesses"
 	level_easy()
 if level == 'medium':
 	print 'You chose medium!\n'
+	level_medium()
 if level == 'hard':
 	print 'You chose hard!\n'
