@@ -15,18 +15,6 @@ def check_answer(user_guess,answer_list,word_position, max_guesses):
 	else:
 		print "Incorrecto!", "You have a total of "+ str(max_guesses - 1) + " guesses"
 
-# def guesses(guess):
-# 	number = 5
-# 	while number > 0:
-# 		if guess == False:
-# 			number -= 1
-# 			return number 
-# 		else:
-# 			return number
-	# if guess == False:
-	# 	number -= 1
-	# 	return number 
-
 def play_game(game_string, blanks_in_text, answers, max_guesses):
 	replaced = []
 	answer = False
@@ -35,14 +23,26 @@ def play_game(game_string, blanks_in_text, answers, max_guesses):
 	for word in game_string:
 		replacement = word_in_blank(word,blanks_in_text)
 		if replacement != None:
+			'''assings a number to index_to_change, depending on what index number replacement is''' 
+			index_to_change = game_string.index(replacement) 
+
 			while not answer and max_guesses != 0:
 				user_input = raw_input("Type a " + replacement + " ")
-				answer = check_answer(user_input,answers,index, max_guesses)
+				answer = check_answer(user_input,answers,index,max_guesses)
 				if not answer:
 					max_guesses -= 1
 				if max_guesses == 0:
 					sys.exit("Game over")
 			word = word.replace(replacement, user_input)
+			
+			'''changes element in list game_string to the value of variable word, above'''
+			game_string[index_to_change] = word
+			'''converts list game_string into a string'''
+			game_string = " ".join(game_string)
+
+			print game_string
+			'''splits game_string again to find the next number in the list'''
+			game_string = game_string.split()
 			replaced.append(word)
 			index += 1
 			answer = False
