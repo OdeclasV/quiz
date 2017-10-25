@@ -15,6 +15,14 @@ def check_answer(user_guess,answer_list,word_position, max_guesses):
 	else:
 		print "Incorrecto!", "You have a total of "+ str(max_guesses - 1) + " guesses"
 
+def change_multiple_blanks(blank, list_level_para):
+	offset = 0
+	indices = list()
+	for i in range(list_level_para.count(blank)):
+		indices.append(list_level_para.index(blank,offset))
+		offset = indices[-1] + 1
+	return indices 
+
 def play_game(game_string, blanks_in_text, answers, max_guesses):
 	# replaced = []
 	answer = False
@@ -24,7 +32,9 @@ def play_game(game_string, blanks_in_text, answers, max_guesses):
 		replacement = word_in_blank(word,blanks_in_text)
 		if replacement != None:
 			'''assings a number to index_to_change, depending on what index number replacement is''' 
-			index_to_change = game_string.index(replacement) 
+
+			blanks_in_para = change_multiple_blanks(replacement,game_string) #[1,6]
+			#index_to_change = game_string.index(replacement)
 
 			while not answer and max_guesses != 0:
 				user_input = raw_input("Type a " + replacement + " ")
@@ -36,7 +46,8 @@ def play_game(game_string, blanks_in_text, answers, max_guesses):
 			word = word.replace(replacement, user_input)
 
 			'''changes element in list game_string to the value of variable word, above'''
-			game_string[index_to_change] = word
+			for i in blanks_in_para:
+				game_string[i] = word
 			'''converts list game_string into a string'''
 			game_string = " ".join(game_string)
 
@@ -53,7 +64,7 @@ def play_game(game_string, blanks_in_text, answers, max_guesses):
 	# return replaced
 
 def level_easy():
-	easy_answers = ['Ipsum', 'def','text', '1500s']
+	easy_answers = ['Ipsum','text', '1500s']
 	blanks_in_text = ["___1___", "___2___", "___3___", "___4___"]
 	easy_para = '''A ___1___ is created with the ___1___ keyword. You specify the inputs a ___2___ takes by adding ___3___ separated by commas between the parentheses.'''
 	'''asks the user the number of guesses per question. Assings raw_input to variable numb_of_wrong_guesses than then it's passed to play_game as an arguemtn)'''
@@ -84,3 +95,14 @@ if level == 'medium':
 	level_medium()
 if level == 'hard':
 	print 'You chose hard!\n'
+
+
+
+
+
+
+
+
+
+
+
