@@ -32,7 +32,7 @@ def play_game(game_string, blanks_in_text, answers, max_guesses):
 				if not answer:
 					max_guesses -= 1
 				if max_guesses == 0:
-					sys.exit("Game over")
+					sys.exit("You ran out of guesses! Sorry, game over")
 			word = word.replace(replacement, user_input)
 
 			'''changes element in list game_string to the value of variable word, above'''
@@ -57,7 +57,7 @@ def level_easy():
 	blanks_in_text = ["___1___", "___2___", "___3___", "___4___"]
 	easy_para = '''A ___1___ is created with the ___1___ keyword. You specify the inputs a ___2___ takes by adding ___3___ separated by commas between the parentheses.'''
 	'''asks the user the number of guesses per question. Assings raw_input to variable numb_of_wrong_guesses than then it's passed to play_game as an arguemtn)'''
-	numb_of_wrong_guesses = int(raw_input("how many guesses for this questions? "))
+	numb_of_wrong_guesses = int(raw_input("how many guesses for this question? "))
 
 	print "The current paragraph is: \n", easy_para
 	paragraph = play_game(easy_para,blanks_in_text,easy_answers, numb_of_wrong_guesses)
