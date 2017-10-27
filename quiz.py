@@ -16,7 +16,7 @@ def check_answer(user_guess,answer_list,word_position, max_guesses):
 	else:
 		print "Incorrecto!", "You have a total of "+ str(max_guesses - 1) + " guesses"
 
-def ask_questions(para,word_to_replace,list_answer,numb_of_guesses,index):
+def ask_questions(word_to_replace,list_answer,numb_of_guesses,index):
 	'''asks for user input to the user to replace the blanks in the specific paragraph. This function takes the return from check_answer (above) that changes variable 'answer' to True. If answers is incorrect, subtracts one from numb_of_guesses and asks the question again. If answer is correct, returns it to be used in play_game(), below.'''
 	answer = False
 	while not answer and numb_of_guesses != 0: #while answer is False and numb_of_guesses is not 0
@@ -24,7 +24,6 @@ def ask_questions(para,word_to_replace,list_answer,numb_of_guesses,index):
 		answer = check_answer(user_input,list_answer,index,numb_of_guesses)
 		if not answer:
 			numb_of_guesses -= 1
-			print para
 		if numb_of_guesses == 0:
 			sys.exit("You ran out of guesses! Sorry, game over") #this is used to stop the game when numb_of_guesses is equal to 0
 	return user_input
