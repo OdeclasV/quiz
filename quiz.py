@@ -11,10 +11,10 @@ def word_in_blank(word, blanks_in_text):
 def check_answer(user_guess,answer_list,word_position, max_guesses):
 	'''checks user's answers to specific blanks, using a list of answers and the indexes in that list, to check if they are correct or incorrect. Prints confirmation to the user and returns True'''
 	if user_guess == answer_list[word_position]:
-		print "Correct!\n"
+		print "Correct! Good job!\n"
 		return True
 	else:
-		print "Incorrecto!", "You have a total of "+ str(max_guesses - 1) + " guesses"
+		print "Incorrect! please try again.", "You have a total of "+ str(max_guesses - 1) + " guesses"
 
 def ask_questions(word_to_replace,list_answer,numb_of_guesses,index):
 	'''asks for user input to the user to replace the blanks in the specific paragraph. This function takes the return from check_answer (above) that changes variable 'answer' to True. If answers is incorrect, subtracts one from numb_of_guesses and asks the question again. If answer is correct, returns it to be used in play_game(), below.'''
@@ -25,7 +25,7 @@ def ask_questions(word_to_replace,list_answer,numb_of_guesses,index):
 		if not answer:
 			numb_of_guesses -= 1
 		if numb_of_guesses == 0:
-			sys.exit("You ran out of guesses! Sorry, game over") #this is used to stop the game when numb_of_guesses is equal to 0
+			sys.exit("You've ran out of guesses! Sorry, game over") #this is used to stop the game when numb_of_guesses is equal to 0
 	return user_input
 
 def change_multiple_blanks(blank, list_level_para):
@@ -57,23 +57,33 @@ def play_game(game_string, blanks_in_text, answers, max_guesses):
 
 def level_easy():
 	'''information for level easy paragraph and answers. Takes no inputs as I want it to exectue as every time the user chooses it without passing any specific information as inputs'''
-	numb_of_wrong_guesses = int(raw_input("how many guesses for this question? ")) #asks the user the number of guesses per question. Assings raw_input to variable numb_of_wrong_guesses than then it's passed to play_game as an arguemtn)
-	easy_para = '''A ___1___ is created with the ___1___ keyword. You specify the inputs a ___2___ takes by adding ___3___ separated by commas between the parentheses.'''
+	numb_of_wrong_guesses = int(raw_input("how many tries would you like to have for this level? ")) #asks the user the number of guesses per question. Assings raw_input to variable numb_of_wrong_guesses than then it's passed to play_game as an arguemtn)
+	easy_para = '''___1___ is a short, pudgy, Italian plumber who wears a red hat and blue overalls and resides in the Mushroom Kingdom. The ___1___ franchise is the best-selling video game franchise of all time, created by the ___2___ company. His adventures generally center upon rescuing Pricess ___3___ from his archenemy ___4___, sometimes with help from ___5___ his brother.'''
 	print "The current paragraph is: \n", easy_para #print current paragraph to the suse at the start of the game
-	blanks_in_text = ["___1___", "___2___", "___3___", "___4___"]
-	easy_answers = ['Ipsum','text', '1500s']
+	blanks_in_text = ["___1___", "___2___", "___3___", "___4___", "___5___"]
+	easy_answers = ['Mario','Nintendo', 'Peach', 'Bowser', 'Luigi']
 
 	paragraph = play_game(easy_para,blanks_in_text,easy_answers, numb_of_wrong_guesses) #calls play_game with these values as inputs
 
 def level_medium():
 	'''same as level_easy() function above'''
-	medium_answers = ['Bolivar', 'Venezuela']
-	blanks_in_text = ["___1___", "___2___"]
-	medium_para = '''Simon ___1___ Caracas, ___2___ '''
-	numb_of_wrong_guesses = int(raw_input("how many guesses for this questions? "))
-
+	numb_of_wrong_guesses = int(raw_input("how many tries would you like to have for this level? "))
+	medium_para = '''The legend of ___1___ centers of Link, the chief protagonist, tasked with rescuing Princess ___1___ and the kingdom of Hyrule. The original game was released in ___2___ and is now one of Nintendo's most prominent and successful franchises. Ocarina of ___3___ remains one of the most critically acclaimed video games for Nintendo, with several other games in the series also earning high marks. In 2006, Nintendo developers hand to make Link ___4___ -handed to make use of new functionalities in the Nintendo Wii.   '''
 	print "The current paragraph is: \n", medium_para
+	blanks_in_text = ["___1___", "___2___", "___3___", "___4___"]
+	medium_answers = ['Zelda', '1986', 'time','right' ]
+	
 	paragraph = play_game(medium_para,blanks_in_text,medium_answers, numb_of_wrong_guesses)
+
+def level_hard():
+	'''same as level_easy() function above'''
+	numb_of_wrong_guesses = int(raw_input("how many tries would you like to have for this level? "))
+	hard_para = '''___1___ Aran is the protagonist of the ___2___ action-adventure game series by Nintendo. She is well-know as of the earliest female protagonists in video game history, and inspiration for the game came from Ridley Scott's film ___3___ which was very popular at that time. She was introduced in the ___4___ video game Metroid. '''
+	print "The current paragraph is: \n", hard_para
+	blanks_in_text = ["___1___", "___2___", "___3___", "___4___"]
+	hard_answers = ['Samus', 'Metroid', 'Alien','1986']
+	
+	paragraph = play_game(hard_para,blanks_in_text,hard_answers, numb_of_wrong_guesses)
 
 
 '''starts game by asking the user the specific level they'd like to play. Given user's answer, a level related to each function it's called '''
@@ -86,6 +96,7 @@ if level == 'medium':
 	level_medium()
 if level == 'hard':
 	print 'You chose hard!\n'
+	level_hard()
 
 
 
