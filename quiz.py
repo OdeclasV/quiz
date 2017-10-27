@@ -60,13 +60,14 @@ def level_easy():
 	'''information for level easy paragraph and answers. Takes no inputs as I want it to exectue as every time the user chooses it without passing any specific information as inputs'''
 	numb_of_wrong_guesses = int(raw_input("how many guesses for this question? ")) #asks the user the number of guesses per question. Assings raw_input to variable numb_of_wrong_guesses than then it's passed to play_game as an arguemtn)
 	easy_para = '''A ___1___ is created with the ___1___ keyword. You specify the inputs a ___2___ takes by adding ___3___ separated by commas between the parentheses.'''
-	print "The current paragraph is: \n", easy_para
+	print "The current paragraph is: \n", easy_para #print current paragraph to the suse at the start of the game
 	blanks_in_text = ["___1___", "___2___", "___3___", "___4___"]
 	easy_answers = ['Ipsum','text', '1500s']
 
 	paragraph = play_game(easy_para,blanks_in_text,easy_answers, numb_of_wrong_guesses) #calls play_game with these values as inputs
 
 def level_medium():
+	'''same as level_easy() function above'''
 	medium_answers = ['Bolivar', 'Venezuela']
 	blanks_in_text = ["___1___", "___2___"]
 	medium_para = '''Simon ___1___ Caracas, ___2___ '''
@@ -76,7 +77,7 @@ def level_medium():
 	paragraph = play_game(medium_para,blanks_in_text,medium_answers, numb_of_wrong_guesses)
 
 
-'''starts game by asking the user the specific level they'd like to play'''
+'''starts game by asking the user the specific level they'd like to play. Given user's answer, a level related to each function it's called '''
 level = raw_input("Choose a level: easy, medium, or hard.\n")
 if level == 'easy':
 	print "You chose easy!\n"
