@@ -57,7 +57,7 @@ def change_multiple_blanks(blank, list_level_para):
 			Function returns, in a list, the indices of elements found'''
 	offset = 0
 	indices = list()
-	for i in range(list_level_para.count(blank)):
+	for element in range(list_level_para.count(blank)):
 		indices.append(list_level_para.index(blank,offset))
 		offset = indices[-1] + 1
 	return indices 
@@ -81,8 +81,8 @@ def play_game(game_string, blanks_in_text, answers, max_guesses):
 			blanks_in_para = change_multiple_blanks(replacement,game_string) #list of indeces of multiple blanks to change
 			user_input = ask_questions(replacement,answers,max_guesses,index) #string of correct answer to specific blank
 			word = word.replace(replacement, user_input) #assings variable word to user_input above
-			for i in blanks_in_para: #changes element in list game_string to the value of variable word, above
-				game_string[i] = word
+			for blank in blanks_in_para: #changes element in list game_string to the value of variable word, above
+				game_string[blank] = word
 			game_string = " ".join(game_string) #converts list game_string into a string
 			print game_string
 			game_string = game_string.split() #splits game_string again to find the next number in the list
