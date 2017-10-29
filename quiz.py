@@ -20,7 +20,7 @@ def ask_questions(word_to_replace,list_answer,numb_of_guesses,index):
 	'''asks for user input to the user to replace the blanks in the specific paragraph. This function takes the return from check_answer (above) that changes variable 'answer' to True. If answers is incorrect, subtracts one from numb_of_guesses and asks the question again. If answer is correct, returns it to be used in play_game(), below.'''
 	answer = False
 	while not answer and numb_of_guesses != 0: #while answer is False and numb_of_guesses is not 0
-		user_input = raw_input("Type a " + word_to_replace + " ")
+		user_input = raw_input("What should go on " + word_to_replace + "? ")
 		answer = check_answer(user_input,list_answer,index,numb_of_guesses)
 		if not answer:
 			numb_of_guesses -= 1
@@ -58,7 +58,7 @@ def play_game(game_string, blanks_in_text, answers, max_guesses):
 def level_easy():
 	'''information for level easy paragraph and answers. Takes no inputs as I want it to exectue as every time the user chooses it without passing any specific information as inputs'''
 	numb_of_wrong_guesses = int(raw_input("how many tries would you like to have for this level? ")) #asks the user the number of guesses per question. Assings raw_input to variable numb_of_wrong_guesses than then it's passed to play_game as an arguemtn)
-	easy_para = '''___1___ is a short, pudgy, Italian plumber who wears a red hat and blue overalls and resides in the Mushroom Kingdom. The ___1___ franchise is the best-selling video game franchise of all time, created by the ___2___ company. His adventures generally center upon rescuing Pricess ___3___ from his archenemy ___4___, sometimes with help from ___5___ his brother.'''
+	easy_para = '''___1___ is a short, pudgy, Italian plumber who wears a red hat and blue overalls and resides in the Mushroom Kingdom. The ___1___ franchise is the best-selling video game franchise of all time, created by the ___2___ company. His adventures generally center upon rescuing Pricess ___3___ from his archenemy ___4___ sometimes with help from ___5___ his brother.'''
 	print "The current paragraph is: \n", easy_para #print current paragraph to the suse at the start of the game
 	blanks_in_text = ["___1___", "___2___", "___3___", "___4___", "___5___"]
 	easy_answers = ['Mario','Nintendo', 'Peach', 'Bowser', 'Luigi']
