@@ -127,13 +127,16 @@ def level_hard():
 
 
 '''starts game by asking the user the specific level they'd like to play. Given user's answer, a level related to each function it's called '''
-level = raw_input("Choose a level: easy, medium, or hard.\n")
-if level == 'easy':
-	print "You chose easy!\n"
-	level_easy()
-if level == 'medium':
-	print 'You chose medium!\n'
-	level_medium()
-if level == 'hard':
-	print 'You chose hard!\n'
-	level_hard()
+def level_selection():
+	level = raw_input("Choose a level: easy, medium, or hard.\n")
+	if level == 'easy':
+		print "You chose easy!\n"
+		level_easy()
+	if level == 'medium':
+		print 'You chose medium!\n'
+		level_medium()
+	if level == 'hard':
+		print 'You chose hard!\n'
+		level_hard()
+l
+evel_selection()
