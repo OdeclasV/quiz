@@ -69,8 +69,6 @@ def play_game(game_string, blanks_in_text, answers):
 				param1: a specific paragraph/string, coming from the specific level the user chooses. 
 				param2: the blanks, or specific terms, we're looking for in param1.
 				param3: the list of answers to the questions, coming from the spefici level the user chooses. 
-				param4: the number of max guesses user has to attempt the quiz. This comes from user input on the number of guesses. 
-
 			Output:
 				Prints the game_string every time user correctly answers a question.  '''
 	max_guesses = int(raw_input("how many tries would you like to have for this level? ")) #asks the user the number of guesses per question. Assings raw_input to variable numb_of_wrong_guesses than then it's passed to play_game as an arguemtn)
@@ -107,11 +105,11 @@ def level_medium():
 		Output: Prints the paragraph for the selected level'''
 	#numb_of_wrong_guesses = int(raw_input("how many tries would you like to have for this level? "))
 	medium_para = '''The legend of ___1___ centers of Link, the chief protagonist, tasked with rescuing Princess ___1___ and the kingdom of Hyrule. The original game was released in ___2___ and is now one of Nintendo's most prominent and successful franchises. Ocarina of ___3___ remains one of the most critically acclaimed video games for Nintendo, with several other games in the series also earning high marks. In 2006, Nintendo developers hand to make Link ___4___ -handed to make use of new functionalities in the Nintendo Wii.   '''
-	print "The current paragraph is: \n", medium_para
+	#print "The current paragraph is: \n", medium_para
 	blanks_in_text = ["___1___", "___2___", "___3___", "___4___"]
 	medium_answers = ['Zelda', '1986', 'time','right' ]
 	
-	paragraph = play_game(medium_para,blanks_in_text,medium_answers, numb_of_wrong_guesses)
+	paragraph = play_game(medium_para,blanks_in_text,medium_answers)
 
 def level_hard():
 	'''Passes information for level easy paragraph, answers and the number of blanks in text. 
@@ -119,15 +117,17 @@ def level_hard():
 		Output: Prints the paragraph for the selected level'''
 	#numb_of_wrong_guesses = int(raw_input("how many tries would you like to have for this level? "))
 	hard_para = '''___1___ Aran is the protagonist of the ___2___ action-adventure game series by Nintendo. She is well-know as of the earliest female protagonists in video game history, and inspiration for the game came from Ridley Scott's film ___3___ which was very popular at that time. She was introduced in the ___4___ video game Metroid. '''
-	print "The current paragraph is: \n", hard_para
+	#print "The current paragraph is: \n", hard_para
 	blanks_in_text = ["___1___", "___2___", "___3___", "___4___"]
 	hard_answers = ['Samus', 'Metroid', 'Alien','1986']
 	
-	paragraph = play_game(hard_para,blanks_in_text,hard_answers, numb_of_wrong_guesses)
+	paragraph = play_game(hard_para,blanks_in_text,hard_answers)
 
 
-'''starts game by asking the user the specific level they'd like to play. Given user's answer, a level related to each function it's called '''
 def level_selection():
+	'''Starts game by asking the user the specific level they'd like to play. Given user's answer, a level related to each function it's called
+		No inputs, and no outputs. It calls the right function corresponding to user's input. '''
+
 	level = raw_input("Choose a level: easy, medium, or hard.\n")
 	if level == 'easy':
 		print "You chose easy!\n"
