@@ -63,7 +63,7 @@ def change_multiple_blanks(blank, list_level_para):
 	return indices 
 
 
-def play_game(game_string, blanks_in_text, answers, max_guesses):
+def play_game(game_string, blanks_in_text, answers):
 	'''Changes and adds answers to each blank into the specific paragraph for each level. 
 			Inputs:
 				param1: a specific paragraph/string, coming from the specific level the user chooses. 
@@ -73,6 +73,8 @@ def play_game(game_string, blanks_in_text, answers, max_guesses):
 
 			Output:
 				Prints the game_string every time user correctly answers a question.  '''
+	max_guesses = int(raw_input("how many tries would you like to have for this level? ")) #asks the user the number of guesses per question. Assings raw_input to variable numb_of_wrong_guesses than then it's passed to play_game as an arguemtn)
+	print "The current paragraph is: \n", game_string #print current paragraph to the suse at the start of the game
 	index = 0
 	game_string = game_string.split()
 	for word in game_string:
@@ -93,19 +95,17 @@ def level_easy():
 			No inputs
 			Output:
 				Prints the paragraph for the selected level.'''
-	numb_of_wrong_guesses = int(raw_input("how many tries would you like to have for this level? ")) #asks the user the number of guesses per question. Assings raw_input to variable numb_of_wrong_guesses than then it's passed to play_game as an arguemtn)
 	easy_para = '''___1___ is a short, pudgy, Italian plumber who wears a red hat and blue overalls and resides in the Mushroom Kingdom. The ___1___ franchise is the best-selling video game franchise of all time, created by the ___2___ company. His adventures generally center upon rescuing Pricess ___3___ from his archenemy ___4___ sometimes with help from ___5___ his brother.'''
-	print "The current paragraph is: \n", easy_para #print current paragraph to the suse at the start of the game
 	blanks_in_text = ["___1___", "___2___", "___3___", "___4___", "___5___"]
 	easy_answers = ['Mario','Nintendo', 'Peach', 'Bowser', 'Luigi']
-
-	paragraph = play_game(easy_para,blanks_in_text,easy_answers, numb_of_wrong_guesses) #calls play_game with these values as inputs
+	paragraph = play_game(easy_para,blanks_in_text,easy_answers) #calls play_game with these values as inputs
+	#print "The current paragraph is: \n", easy_para #print current paragraph to the suse at the start of the game
 
 def level_medium():
 	'''Passes information for level easy paragraph, answers and the number of blanks in text. 
 			No inputs
 		Output: Prints the paragraph for the selected level'''
-	numb_of_wrong_guesses = int(raw_input("how many tries would you like to have for this level? "))
+	#numb_of_wrong_guesses = int(raw_input("how many tries would you like to have for this level? "))
 	medium_para = '''The legend of ___1___ centers of Link, the chief protagonist, tasked with rescuing Princess ___1___ and the kingdom of Hyrule. The original game was released in ___2___ and is now one of Nintendo's most prominent and successful franchises. Ocarina of ___3___ remains one of the most critically acclaimed video games for Nintendo, with several other games in the series also earning high marks. In 2006, Nintendo developers hand to make Link ___4___ -handed to make use of new functionalities in the Nintendo Wii.   '''
 	print "The current paragraph is: \n", medium_para
 	blanks_in_text = ["___1___", "___2___", "___3___", "___4___"]
@@ -117,7 +117,7 @@ def level_hard():
 	'''Passes information for level easy paragraph, answers and the number of blanks in text. 
 			No inputs
 		Output: Prints the paragraph for the selected level'''
-	numb_of_wrong_guesses = int(raw_input("how many tries would you like to have for this level? "))
+	#numb_of_wrong_guesses = int(raw_input("how many tries would you like to have for this level? "))
 	hard_para = '''___1___ Aran is the protagonist of the ___2___ action-adventure game series by Nintendo. She is well-know as of the earliest female protagonists in video game history, and inspiration for the game came from Ridley Scott's film ___3___ which was very popular at that time. She was introduced in the ___4___ video game Metroid. '''
 	print "The current paragraph is: \n", hard_para
 	blanks_in_text = ["___1___", "___2___", "___3___", "___4___"]
@@ -138,5 +138,5 @@ def level_selection():
 	if level == 'hard':
 		print 'You chose hard!\n'
 		level_hard()
-l
-evel_selection()
+
+level_selection()
