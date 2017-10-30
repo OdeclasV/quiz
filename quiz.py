@@ -1,27 +1,17 @@
 import sys 
 
-
 def word_in_blank(word, blanks_in_text):
-<<<<<<< HEAD
-	'''looks for presence of specific blanks within the given paragraphs'''
-	for n in blanks_in_text:
-		if n in word:
-			return n
-	return None
-
-def check_answer(user_guess,answer_list,word_position, max_guesses):
-	'''checks user's answers to specific blanks, using a list of answers and the indexes in that list, to check if they are correct or incorrect. Prints confirmation to the user and returns True'''
-=======
 	'''Looks for presence of specific blanks within the given paragraphs.
 	   Inputs: 
 	   		param1: a word to look for
 	   		param2: a list to in which to look an instance of argument1
 	   	Output:
 	   		a word in that's in the argument2 list. Otherwise returns None if the word is not presence in argument2'''
-	for element in blanks_in_text:
-		if element in word:
-			return element
+	for n in blanks_in_text:
+		if n in word:
+			return n
 	return None
+
 
 def check_answer(user_guess,answer_list,word_position, max_guesses):
 	'''Checks user's answers to specific blanks, using a list of answers and the indexes in that list, to check if they are correct or incorrect. 
@@ -32,7 +22,6 @@ def check_answer(user_guess,answer_list,word_position, max_guesses):
 				param4: number of max gusses the user has to attemp answering questions. This param comes from ask_questions() below, and takes it's value from play_game().
 		Outputs:
 				If answer is correct, Returns True. Otherwise, prints a strings to user saying the answer is incorrect and substracts 1 from param4'''
->>>>>>> for_testing
 	if user_guess == answer_list[word_position]:
 		print "Correct! Good job!\n"
 		return True
@@ -40,9 +29,6 @@ def check_answer(user_guess,answer_list,word_position, max_guesses):
 		print "Incorrect! please try again.", "You have a total of "+ str(max_guesses - 1) + " guesses"
 
 def ask_questions(word_to_replace,list_answer,numb_of_guesses,index):
-<<<<<<< HEAD
-	'''asks for user input to the user to replace the blanks in the specific paragraph. This function takes the return from check_answer (above) that changes variable 'answer' to True. If answers is incorrect, subtracts one from numb_of_guesses and asks the question again. If answer is correct, returns it to be used in play_game(), below.'''
-=======
 	'''Asks for user input to replace the blanks in the specific paragraph. 
 			Inputs:
 				param1: specific word to be replaced whe given a user_input. This comes from the replacement variable in play_game().
@@ -51,7 +37,6 @@ def ask_questions(word_to_replace,list_answer,numb_of_guesses,index):
 				param4: index of specific answer being sought within param2. 
 			Output:
 				If answer is correct, returns user_input to play_game(), below.'''
->>>>>>> for_testing
 	answer = False
 	while not answer and numb_of_guesses != 0: #while answer is False and numb_of_guesses is not 0
 		user_input = raw_input("What should go on " + word_to_replace + "? ")
@@ -63,9 +48,6 @@ def ask_questions(word_to_replace,list_answer,numb_of_guesses,index):
 	return user_input
 
 def change_multiple_blanks(blank, list_level_para):
-<<<<<<< HEAD
-	'''takes the index of multiple similar blanks in a specific paragraph. This is done in case there are more that one similar blanks/words that need to be changed at the same time. Function retursn, in a list, the indices of elements found'''
-=======
 	'''Takes the index of multiple similar blanks in a specific paragraph. This is done in case there are more that one similar blanks/words that need to be changed at the same time. 
 		Inputs:
 			param1: the blank(s) we're looking for. This comes from play_game(), below.
@@ -73,7 +55,6 @@ def change_multiple_blanks(blank, list_level_para):
 
 		Outputs:
 			Function returns, in a list, the indices of elements found'''
->>>>>>> for_testing
 	offset = 0
 	indices = list()
 	for element in range(list_level_para.count(blank)):
@@ -81,11 +62,6 @@ def change_multiple_blanks(blank, list_level_para):
 		offset = indices[-1] + 1
 	return indices 
 
-
-<<<<<<< HEAD
-def play_game(game_string, blanks_in_text, answers, max_guesses):
-	'''changes and adds answers to each blank into the specific paragraph for each level. As inputs, takes inforamtion from a level in the game, depending on which one the user chooses.'''
-=======
 def play_game(game_string, blanks_in_text, answers):
 	'''Changes and adds answers to each blank into the specific paragraph for each level. 
 			Inputs:
@@ -96,7 +72,6 @@ def play_game(game_string, blanks_in_text, answers):
 				Prints the game_string every time user correctly answers a question.  '''
 	max_guesses = int(raw_input("how many tries would you like to have for this level? ")) #asks the user the number of guesses per question. Assings raw_input to variable numb_of_wrong_guesses than then it's passed to play_game as an arguemtn)
 	print "The current paragraph is: \n", game_string #print current paragraph to the suse at the start of the game
->>>>>>> for_testing
 	index = 0
 	game_string = game_string.split()
 	for word in game_string:
@@ -105,68 +80,14 @@ def play_game(game_string, blanks_in_text, answers):
 			blanks_in_para = change_multiple_blanks(replacement,game_string) #list of indeces of multiple blanks to change
 			user_input = ask_questions(replacement,answers,max_guesses,index) #string of correct answer to specific blank
 			word = word.replace(replacement, user_input) #assings variable word to user_input above
-<<<<<<< HEAD
-			for i in blanks_in_para: #changes element in list game_string to the value of variable word, above
-				game_string[i] = word
-=======
 			for blank in blanks_in_para: #changes element in list game_string to the value of variable word, above
 				game_string[blank] = word
->>>>>>> for_testing
 			game_string = " ".join(game_string) #converts list game_string into a string
 			print game_string
 			game_string = game_string.split() #splits game_string again to find the next number in the list
 			index += 1
 
 def level_easy():
-<<<<<<< HEAD
-	'''information for level easy paragraph and answers. Takes no inputs as I want it to exectue as every time the user chooses it without passing any specific information as inputs'''
-	numb_of_wrong_guesses = int(raw_input("how many tries would you like to have for this level? ")) #asks the user the number of guesses per question. Assings raw_input to variable numb_of_wrong_guesses than then it's passed to play_game as an arguemtn)
-	easy_para = '''___1___ is a short, pudgy, Italian plumber who wears a red hat and blue overalls and resides in the Mushroom Kingdom. The ___1___ franchise is the best-selling video game franchise of all time, created by the ___2___ company. His adventures generally center upon rescuing Pricess ___3___ from his archenemy ___4___ sometimes with help from ___5___ his brother.'''
-	print "The current paragraph is: \n", easy_para #print current paragraph to the suse at the start of the game
-	blanks_in_text = ["___1___", "___2___", "___3___", "___4___", "___5___"]
-	easy_answers = ['Mario','Nintendo', 'Peach', 'Bowser', 'Luigi']
-
-	paragraph = play_game(easy_para,blanks_in_text,easy_answers, numb_of_wrong_guesses) #calls play_game with these values as inputs
-
-def level_medium():
-	'''same as level_easy() function above'''
-	numb_of_wrong_guesses = int(raw_input("how many tries would you like to have for this level? "))
-	medium_para = '''The legend of ___1___ centers of Link, the chief protagonist, tasked with rescuing Princess ___1___ and the kingdom of Hyrule. The original game was released in ___2___ and is now one of Nintendo's most prominent and successful franchises. Ocarina of ___3___ remains one of the most critically acclaimed video games for Nintendo, with several other games in the series also earning high marks. In 2006, Nintendo developers hand to make Link ___4___ -handed to make use of new functionalities in the Nintendo Wii.   '''
-	print "The current paragraph is: \n", medium_para
-	blanks_in_text = ["___1___", "___2___", "___3___", "___4___"]
-	medium_answers = ['Zelda', '1986', 'time','right' ]
-	
-	paragraph = play_game(medium_para,blanks_in_text,medium_answers, numb_of_wrong_guesses)
-
-def level_hard():
-	'''same as level_easy() function above'''
-	numb_of_wrong_guesses = int(raw_input("how many tries would you like to have for this level? "))
-	hard_para = '''___1___ Aran is the protagonist of the ___2___ action-adventure game series by Nintendo. She is well-know as of the earliest female protagonists in video game history, and inspiration for the game came from Ridley Scott's film ___3___ which was very popular at that time. She was introduced in the ___4___ video game Metroid. '''
-	print "The current paragraph is: \n", hard_para
-	blanks_in_text = ["___1___", "___2___", "___3___", "___4___"]
-	hard_answers = ['Samus', 'Metroid', 'Alien','1986']
-	
-	paragraph = play_game(hard_para,blanks_in_text,hard_answers, numb_of_wrong_guesses)
-
-
-'''starts game by asking the user the specific level they'd like to play. Given user's answer, a level related to each function it's called '''
-level = raw_input("Choose a level: easy, medium, or hard.\n")
-if level == 'easy':
-	print "You chose easy!\n"
-	level_easy()
-if level == 'medium':
-	print 'You chose medium!\n'
-	level_medium()
-if level == 'hard':
-	print 'You chose hard!\n'
-	level_hard()
-
-
-
-
-
-
-=======
 	'''Passes information for level easy paragraph, answers and the number of blanks in text. 
 			No inputs
 			Output:
@@ -196,7 +117,6 @@ def level_hard():
 	
 	paragraph = play_game(hard_para,blanks_in_text,hard_answers)
 
-
 def level_selection():
 	'''Starts game by asking the user the specific level they'd like to play. Given user's answer, a level related to each function it's called
 		No inputs, and no outputs. It calls the right function corresponding to user's input. '''
@@ -213,4 +133,3 @@ def level_selection():
 		level_hard()
 
 level_selection()
->>>>>>> for_testing
