@@ -62,7 +62,6 @@ def change_multiple_blanks(blank, list_level_para):
 		offset = indices[-1] + 1
 	return indices 
 
-
 def play_game(game_string, blanks_in_text, answers):
 	'''Changes and adds answers to each blank into the specific paragraph for each level. 
 			Inputs:
@@ -117,7 +116,6 @@ def level_hard():
 	hard_answers = ['Samus', 'Metroid', 'Alien','1986']
 	
 	paragraph = play_game(hard_para,blanks_in_text,hard_answers)
-
 
 def level_selection():
 	'''Starts game by asking the user the specific level they'd like to play. Given user's answer, a level related to each function it's called
